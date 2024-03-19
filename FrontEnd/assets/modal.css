@@ -1,0 +1,89 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
+  }
+
+  .modal-content{
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    width: 30%;
+    padding: 50px;
+  }
+
+  .modal-header {
+    padding-bottom: 30px; /* Espacement sous l'en-tête */
+}
+
+.modal-header > h3 {
+  color: #000;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+    
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .modal-gallery {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  
+  .modal-gallery img {
+    width: 100%;
+  }
+
+
+/* Ajoutez ces règles pour les boutons de suppression */
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: black;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Ajoutez ces règles pour les images individuelles */
+.modal-gallery figure {
+  position: relative; /* Pour permettre d'avoir le trash can sur chaque image */
+}
+
+/* Ajoutez ces règles pour l'icône de la corbeille */
+.delete-button i {
+  font-size: 15px;
+}

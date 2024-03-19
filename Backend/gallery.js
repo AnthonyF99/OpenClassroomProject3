@@ -52,3 +52,27 @@ document.getElementById('filter-btn-4').addEventListener('click', () => displayG
 
 // Affichage initial de la galerie (affiche toutes les catégories par défaut)
 displayGalleryByCategory('Tous');
+
+function displayAdminGallery() {
+  // Masquer la galerie publique avec les filtres
+  document.querySelector('.filter-container').style.display = 'none';
+  document.getElementById('modify-button').style.display = 'block'; // Afficher le bouton de modification
+}
+
+function checkAdminStatus() {
+  // Vérifier si un token est présent dans le sessionStorage
+  const token = sessionStorage.getItem('token');
+  return token !== null; // Renvoyer vrai si un token est présent, ce qui signifie que l'utilisateur est connecté
+}
+
+function displayGallery() {
+  const isAdmin = checkAdminStatus(); // Vérifier si l'utilisateur est un administrateur
+
+  if (isAdmin) {
+      displayAdminGallery(); // Afficher la galerie en mode administration si l'utilisateur est un administrateur
+  } else {
+      displayGalleryByCategory('Tous'); // Afficher la galerie publique avec les filtres si l'utilisateur n'est pas un administrateur
+  }
+}
+
+displayGallery();

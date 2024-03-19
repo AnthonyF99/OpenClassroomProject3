@@ -9,7 +9,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modal.css">
+	<script src="https://kit.fontawesome.com/e79e12b662.js" crossorigin="anonymous"></script>
 	<script type="module" src="/Backend/gallery.js" defer></script>
+	<script type="module" src="/Backend/auth.js" defer ></script>
+	<script type="module" src="/Backend/modal.js" defer ></script>
 </head>
 <body>
 <header>
@@ -18,7 +22,8 @@
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li>contact</li>
-			<li><a href="login.html">login</a></li>
+			<li><a href="login.html" id="login-link">login</a></li>
+			<li><a href="#" id="logout-link">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,7 +41,22 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="title-button-wrapper">
+			<h2>Mes Projets</h2>
+			<button id="modify-btn"><span><i class="fa-regular fa-pen-to-square"></i></span>modifier</button>
+		</div>
+		<div class="modal" id="first-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h3>Galerie photo</h3>
+				</div>
+					<div class="modal-gallery">
+	
+					</div>			
+			</div>
+			</div>
+
 		<div class="filter-container">
 			<button class="filter-btn" id="filter-btn-1">Tous</button>
 			<button class="filter-btn" id="filter-btn-2">Objets</button>
