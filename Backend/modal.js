@@ -1,30 +1,45 @@
 // Get the modal
-const modal = document.getElementById("first-modal");
+const modals = document.querySelectorAll(".modal");
 
 // Get the button that opens the modal
-const btn = document.getElementById("modify-btn");
+const modifyBtn = document.getElementById("modify-btn");
 
 // Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
+const closeButtons = document.querySelectorAll(".close");
+
+const select = document.getElementById("select-category-modal");
+
+const addPhotoBtn = document.getElementById('addPhoto-btn');
+
+const uploadInput = document.getElementById('upload-work-image-modal');
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+modifyBtn.onclick = () => {
+  modals[0].style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+closeButtons.forEach(button => {
+  button.onclick = () => {
+    modals.forEach(modal => {
+      modal.style.display = "none";
+      select.value="";
+    });
+  }
+});
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = event => {
+  modals.forEach(modal => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      //Reset the select to its default option
+      select.value="";
+    }
+  });
 }
 
-// Fonction pour afficher la galerie en fonction des filtres
+// Fonction pour afficher
 async function displayGallery() {
     try {
       // Fetch the data from the API at the URL "http://localhost:5678/api/works"
@@ -70,3 +85,35 @@ async function displayGallery() {
     } 
 
 displayGallery();
+
+function deleteButton() {
+  deleteButton.addEventListener('click', () => {
+    
+  });
+}
+
+function nextModal() {
+  addPhotoBtn.addEventListener('click', () => {
+    modals[0].style.display = 'none';
+    modals[1].style.display = 'block';
+  });
+}
+
+nextModal();
+
+function addWork() {
+
+}
+
+function imageMaxSize() {
+  uploadInput.addEventListener('change', function() {
+  const file = this.files[0];
+  const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
+
+  if (file && file.size > maxSize) {
+    alert('Le fichier est trop volumineux. La taille maximale autorisée est de 4 Mo.');
+    this.value = ''; // Effacer le fichier sélectionné
+  }
+});
+
+}

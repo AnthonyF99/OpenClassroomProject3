@@ -39,7 +39,7 @@ async function authentification() {
             // Stocker le token dans sessionStorage ou localStorage
             sessionStorage.setItem('token', token);
 
-            // Redirection vers la page administrateur ou autre action en cas de succès
+            // Redirection vers la page principal
             window.location.href = '/FrontEnd/index.html';
         } else 
         if (response.status === 404) {

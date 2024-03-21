@@ -53,9 +53,41 @@
 				</div>
 					<div class="modal-gallery">
 	
-					</div>			
+					</div>
+					<hr>
+					<button id="addPhoto-btn">Ajouter une photo</button>
 			</div>
+		</div>
+		<div class="modal" id="second-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h3>Ajout photo</h3>
+				</div>
+				<div class="modal-add-work">
+					<form method="post">
+						<div class="upload-file-container">
+							<i class="fa-regular fa-image"></i>
+							<label for="upload-work-image-modal" class="custom-file-upload">
+								+ Ajouter une photo
+							</label>
+							<input type="file" name="upload-work" id="upload-work-image-modal" alt="upload image" accept="image/jpeg, image/png" required> <br>
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<label for="work-title-modal">Titre</label>
+						<input class="modal-input" type="text" name="title" id="work-title-modal" alt="input title" required> <br>
+						<label for="work-category-modal">Catégorie</label>
+						<select class="modal-input" name="select-category" id="select-category-modal" required>
+							<option disabled selected value=""></option>
+							<option value="objets">Objets</option>
+							<option value="Appartements">Appartements</option>
+							<option value="hotels-restaurants">Hôtels & Restaurants</option>
+						</select> <br>
+						<input type="submit" value="Valider" id="submit-work">
+					</form>
+				</div>
 			</div>
+		</div>
 
 		<div class="filter-container">
 			<button class="filter-btn" id="filter-btn-1">Tous</button>

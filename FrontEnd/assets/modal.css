@@ -87,3 +87,91 @@
 .delete-button i {
   font-size: 15px;
 }
+
+#addPhoto-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border: none;
+  padding: 10px 49px;
+  background-color: #1D6154;
+  border-radius: 68px;
+  margin: 0 auto; /* Ajoutez cette règle pour centrer horizontalement le bouton */
+}
+
+.modal-add-work {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-file-container {
+  background-color: #E8F1F6;
+  height: 169px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.upload-file-container i {
+  display: flex;
+  flex-direction: column;
+  color: #B9C5CC;
+  font-size: 76px;
+}
+
+.custom-file-upload {
+  background-color: #CBD6DC;
+  color: #306685;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Pour cacher le texte "Choose File" */
+input[type="file"]::-webkit-file-upload-button, /* Cible le bouton dans les navigateur webkit (chrome et safari) */
+input[type="file"]::-moz-file-upload-button, /* Cible le bouton dans les navigateurs mozzila (firefox) */
+input[type="file"]::file-selector-button /* Cible le bouton dans les navigateurs modernes */ {
+  visibility: hidden; /* Rend le texte "Choose File" invisible */
+}
+
+/* Pour cacher le champ d'entrée par défaut */
+input[type="file"] {
+  display: none; /* Cache le champ d'entrée */
+}
+
+
+.modal-add-work .modal-input {
+    width: 100%;
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    margin-bottom: 30px;
+}
+
+
+.modal-add-work select {
+  width: 100%;
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  margin-bottom: 30px;
+}
+
+#submit-work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border: none;
+  padding: 10px 49px;
+  background-color: #A7A7A7!important;
+  border-radius: 68px;
+  margin: 0 auto; /* Ajoutez cette règle pour centrer horizontalement le bouton */
+}
+
