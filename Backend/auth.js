@@ -10,7 +10,10 @@ async function authentification() {
 
         // Vérifier si les identifiants correspondent aux valeurs attendues
         if (email !== "sophie.bluel@test.tld" || password !== "S0phie") {
-            console.log("Erreur dans l'identification ou le mot de passe");
+            const errorMessageElement = document.getElementById('errorMessage');
+            errorMessageElement.innerText = "Erreur dans l'identification ou le mot de passe"
+            errorMessageElement.style.color = "red";
+            errorMessageElement.style.display = "block";
             return; // Sortir de la fonction si les identifiants sont incorrects
         }
 

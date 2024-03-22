@@ -107,6 +107,7 @@
 }
 
 .upload-file-container {
+  position: relative;
   background-color: #E8F1F6;
   height: 169px;
   text-align: center;
@@ -114,6 +115,23 @@
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+/* Ajoutez ces règles pour centrer l'aperçu de l'image */
+#imagePreview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#imagePreview img {
+  width: 129px;
+  height: 100%;
+}
+
 
 .upload-file-container i {
   display: flex;
