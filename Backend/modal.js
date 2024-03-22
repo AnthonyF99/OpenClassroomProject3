@@ -1,3 +1,4 @@
+
 // Get the modal
 const modals = document.querySelectorAll(".modal");
 
@@ -24,9 +25,9 @@ const paragraphElement = document.querySelector('.upload-file-container p');
 
 
 // When the user clicks the button, open the modal 
-modifyBtn.onclick = () => {
+modifyBtn.addEventListener('click', () => {
   modals[0].style.display = "block";
-}
+});
 
 // When the user clicks on <span> (x), close the modal
 closeButtons.forEach(button => {
@@ -98,6 +99,8 @@ displayGallery();
 
 //----------------------------------------------------------------
 //Fonction pour créer le button de suppression des travaux
+import { displayGalleryByCategory } from "./gallery.js";
+
 
 function createDeleteButton(workId) {
   const deleteButton = document.createElement('button');
@@ -115,6 +118,7 @@ function createDeleteButton(workId) {
           if (deleteResponse.ok) {
               // Si la suppression est réussie, actualise la galerie
               displayGallery();
+              displayGalleryByCategory('Tous');
           } else {
               console.error(`Failed to delete work ${workId}`);
           }
@@ -222,7 +226,8 @@ async function addWork() {
 
 //Function pour limiter la taille maximal d'upload
 function imageMaxSize() {
-  inputImage.addEventListener('change', () => {
+  //Function régulière au lieu de fléchée, pour que this face référence à son élément inputImage
+  inputImage.addEventListener('change', function() {
   const file = this.files[0];
   const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
 
@@ -238,7 +243,7 @@ imageMaxSize()
 
 //---------------------------------------------------
 
-// Function pour réintialiser les valeurs et affichages
+// Function pour réintialiser les valeurs et afficahges
 
 function resetForm() {
   // Réinitialiser les valeurs des éléments du formulaire

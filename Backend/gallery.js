@@ -1,40 +1,39 @@
-// Fonction pour afficher la galerie en fonction des filtres
-async function displayGalleryByCategory(category) {
+// Fonction générique pour récupérer les données de l'API
+ async function fetchDataFromAPIGallery() {
   try {
-    // Fetch the data from the API at the URL "http://localhost:5678/api/works"
-    const response = await fetch('http://localhost:5678/api/works');
-    // Convert the response to JSON format
-    const data = await response.json();
+      const response = await fetch('http://localhost:5678/api/works');
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('Error fetching data from API:', error);
+      throw error; // Renvoie l'erreur pour qu'elle puisse être gérée à l'appelant
+  }
+}
 
-    // Clear previous content in the gallery
+// Fonction pour afficher la galerie en fonction des filtres
+export async function displayGalleryByCategory(category) {
+  try {
+    const data = await fetchDataFromAPIGallery(); // Récupère les données de l'API
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
 
-    // Crée un ensemble pour stocker les identifiants uniques des œuvres
     const uniqueWorkIds = new Set();
-
-    // Parcours les données pour afficher les œuvres dans la galerie
     data.forEach(work => {
-      // Si la catégorie est "Tous" ou correspond à la catégorie de l'œuvre
-      if (category === 'Tous' || work.category.name === category) {
-        // Vérifie si l'œuvre n'a pas déjà été ajoutée à la galerie
-        if (!uniqueWorkIds.has(work.id)) {
-          // Ajoute l'identifiant de l'œuvre à l'ensemble pour éviter les doublons
-          uniqueWorkIds.add(work.id);
+        if (category === 'Tous' || work.category.name === category) {
+            if (!uniqueWorkIds.has(work.id)) {
+                uniqueWorkIds.add(work.id);
 
-          // Crée des éléments HTML pour afficher l'œuvre dans la galerie
-          const figure = document.createElement('figure');
-          const img = document.createElement('img');
-          const figcaption = document.createElement('figcaption');
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                const figcaption = document.createElement('figcaption');
 
-          img.src = work.imageUrl; // Définit l'URL de l'image
-          img.alt = work.title; // Définit le texte alternatif de l'image
-          figcaption.textContent = work.title; // Définit le titre de l'œuvre
+                img.src = work.imageUrl;
+                img.alt = work.title;
+                figcaption.textContent = work.title;
 
-          // Ajoute les éléments à la galerie
-          figure.appendChild(img);
-          figure.appendChild(figcaption);
-          gallery.appendChild(figure);
+                figure.appendChild(img);
+                figure.appendChild(figcaption);
+                gallery.appendChild(figure);
         }
       }
     });
@@ -53,10 +52,10 @@ document.getElementById('filter-btn-4').addEventListener('click', () => displayG
 // Affichage initial de la galerie (affiche toutes les catégories par défaut)
 displayGalleryByCategory('Tous');
 
-function displayAdminGallery() {
+function displayAdminOptions() {
   // Masquer la galerie publique avec les filtres
   document.querySelector('.filter-container').style.display = 'none';
-  document.getElementById('modify-button').style.display = 'block'; // Afficher le bouton de modification
+  document.getElementById('modify-btn').style.display = 'block'; // Afficher le bouton de modification
 }
 
 function checkAdminStatus() {
@@ -65,14 +64,14 @@ function checkAdminStatus() {
   return token !== null; // Renvoyer vrai si un token est présent, ce qui signifie que l'utilisateur est connecté
 }
 
-function displayGallery() {
+export function displayAdminGallery() {
   const isAdmin = checkAdminStatus(); // Vérifier si l'utilisateur est un administrateur
 
   if (isAdmin) {
-      displayAdminGallery(); // Afficher la galerie en mode administration si l'utilisateur est un administrateur
+      displayAdminOptions(); // Afficher la galerie en mode administration si l'utilisateur est un administrateur
   } else {
       displayGalleryByCategory('Tous'); // Afficher la galerie publique avec les filtres si l'utilisateur n'est pas un administrateur
   }
 }
 
-displayGallery();
+displayAdminGallery();
