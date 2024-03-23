@@ -15,6 +15,7 @@ async function authentification() {
             errorMessageElement.style.color = "red";
             errorMessageElement.style.display = "block";
             return; // Sortir de la fonction si les identifiants sont incorrects
+            // Permet d'éviter d'éxécuter le reste du code inutilement.
         }
 
         // Créer un objet JSON avec les données de l'utilisateur

@@ -11,9 +11,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/modal.css">
 	<script src="https://kit.fontawesome.com/e79e12b662.js" crossorigin="anonymous"></script>
-	<script type="module" src="/Backend/gallery.js" defer></script>
-	<script type="module" src="/Backend/auth.js" defer ></script>
-	<script type="module" src="/Backend/modal.js" defer ></script>
+	<script src="/Backend/auth.js" defer ></script>
 </head>
 <body>
 <header>
@@ -67,19 +65,19 @@
 				<div class="modal-add-work">
 					<form method="post">
 						<div class="upload-file-container">
+							<div id="imagePreview"></div>
 							<i class="fa-regular fa-image"></i>
 							<label for="upload-work-image-modal" class="custom-file-upload">
 								+ Ajouter une photo
 							</label>
-							<input type="file" name="upload-work" id="upload-work-image-modal" alt="upload image" accept="image/jpeg, image/png" required> <br>
-							<div id="imagePreview"></div>
+							<input type="file" name="upload-work" id="upload-work-image-modal" accept="image/jpeg, image/png" required> <br>
 							<p>jpg, png : 4mo max</p>
 						</div>
 						<label for="work-title-modal">Titre</label>
-						<input class="modal-input" type="text" name="title" id="work-title-modal" alt="input title" required> <br>
-						<label for="work-category-modal">Catégorie</label>
+						<input class="modal-input" type="text" name="title" id="work-title-modal" required> <br>
+						<label for="select-category-modal">Catégorie</label>
 						<select class="modal-input" name="select-category" id="select-category-modal" required>
-							<option disabled selected value=""></option>
+							<option disabled selected value="">Sélectionnez une option</option>
 							<option value="objets">Objets</option>
 							<option value="Appartements">Appartements</option>
 							<option value="hotels-restaurants">Hôtels & Restaurants</option>
@@ -122,5 +120,7 @@
 		</ul>
 	</nav>
 </footer>
+<script type="module" src="/Backend/gallery.js" ></script>
+<script type="module" src="/Backend/modal.js" ></script>
 </body>
 </html>
