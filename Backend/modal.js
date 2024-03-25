@@ -22,6 +22,11 @@ const labelElement = document.querySelector('.upload-file-container label');
 const paragraphElement = document.querySelector('.upload-file-container p');
 
 
+const modalAddWork = document.querySelector('.modal-add-work');
+const form = modalAddWork.querySelector('form');
+const workForm = document.getElementById('workForm');
+const submitButton = workForm.querySelector('#submit-work');
+
 
 
 // When the user clicks the button, open the modal 
@@ -186,44 +191,60 @@ imagePreview.addEventListener('click', () => {
 
 displayPreviewImage()
 
-//Ajout de nouveaux travaux
+//--------------------------------------------------------------
 
+// Ajouter un écouteur d'événement sur la soumission du formulaire
+workForm.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+  await addWork();
+});
+
+
+// Function pour ajouter de nouveaux travaux
 async function addWork() {
   try {
-    // Récupérer les valeurs des images, titre, category
-    const image = inputImage.value;
-    const title = inputTitle.value;
-    const category = selectCategory.value;
-    // Vérifier si les identifiants correspondent aux valeurs attendues
-    if (image ==="" || title === "" || category === "") {
-        const errorMessageElement = document.getElementById('errorMessage');
-        errorMessageElement.innerText = "Erreur dans l'identification ou le mot de passe"
-        errorMessageElement.style.color = "red";
-        errorMessageElement.style.display = "block";
-        return; // Sortir de la fonction si les identifiants sont incorrects
+    // Créer un objet FormData pour les données multipart/form-data
+    const formData = new FormData();
+    // Récupérer le fichier d'image à partir de l'élément input
+    const image = inputImage.files[0];
+    const title = inputTitle.value
+    const category = selectCategory.options[selectCategory.selectedIndex].dataset.categoryId;
+    // Ajouter le fichier d'image à formData s'il existe
+    if (image) {
+      formData.append('image', image);
     }
-
-    // Créer un objet JSON avec les données du nouveau work que l'utilisateur à ajouté
-    const workData = {
-        image: image,
-        title: title,
-        category: category
-    };
+    // Ajouter les autres champs à formData
+    formData.append('title', title);
+    formData.append('category', category);
 
     // Effectuer la requête POST vers votre API
     const response = await fetch("http://localhost:5678/api/works", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`                      
-        },
-        body: JSON.stringify(workData) // Convertir l'objet JSON en chaîne JSON
+      method: 'POST',
+      headers: {
+        // Pas besoin de définir Content-Type, le navigateur le fera automatiquement pour FormData
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: formData // Utiliser formData pour envoyer les données multipart/form-data
     });
-} catch {
-  console.error
-}
+
+    // Vérifier si la réponse est ok (statut HTTP 2xx)
+    if (response.ok) {
+      // Si l'ajout est réussi, actualiser la galerie
+      displayGallery();
+      displayGalleryByCategory('Tous');
+      console.log("Le travail a été ajouté avec succès");
+    } else {
+      // Si la réponse n'est pas ok, afficher le message d'erreur
+      const errorMessage = await response.text();
+      console.error(`Erreur lors de l'ajout du travail : ${errorMessage}`);
+    }
+  } catch (error) {
+    // Attraper les erreurs et les afficher dans la console
+    console.error('Erreur lors de l\'ajout du travail :', error.message);
+  }
 }
 
+//---------------------------------------------
 //Function pour limiter la taille maximal d'upload
 function imageMaxSize() {
   //Function régulière au lieu de fléchée, pour que this face référence à son élément inputImage
@@ -258,3 +279,30 @@ function resetForm() {
   labelElement.style.display = 'block';
   paragraphElement.style.display = 'block';
 }
+
+//Ce code permet de verifier si tout les champs sont remplies
+//Si ils le sont le bouton valider est fonctionnel, sinon il est disabled
+document.addEventListener("DOMContentLoaded", function() {
+
+
+  // Ajouter un écouteur d'événements pour surveiller les changements dans le formulaire
+  form.addEventListener('input', function() {
+      // Vérifier si tous les champs requis sont remplis
+      const inputs = form.querySelectorAll('input[required], select[required]');
+      let allFilled = true;
+      inputs.forEach(input => {
+          if (!input.value.trim()) {
+              allFilled = false;
+          }
+      });
+
+      // Activer ou désactiver le bouton de validation en fonction de l'état des champs requis
+      if (allFilled) {
+          submitButton.removeAttribute('disabled');
+      } else {
+          submitButton.setAttribute('disabled', 'disabled');
+      }
+  });
+});
+
+

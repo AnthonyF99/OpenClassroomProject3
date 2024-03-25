@@ -52,6 +52,26 @@ document.getElementById('filter-btn-4').addEventListener('click', () => displayG
 // Affichage initial de la galerie (affiche toutes les catégories par défaut)
 displayGalleryByCategory('Tous');
 
+
+//Changement quand un bouton est actif
+// Récupérer tous les boutons de filtre
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+// Ajouter un écouteur d'événements à chaque bouton de filtre
+filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Supprimer la classe 'active' de tous les boutons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Ajouter la classe 'active' uniquement au bouton cliqué
+        this.classList.add('active');
+    });
+    
+    // Activer le bouton "Tous" par défaut
+    const tousButton = document.getElementById('filter-btn-1');
+    tousButton.classList.add('active');
+});
+
+
 function displayAdminOptions() {
   // Masquer la galerie publique avec les filtres
   document.querySelector('.filter-container').style.display = 'none';

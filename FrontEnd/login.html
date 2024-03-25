@@ -14,20 +14,23 @@
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="index.html">projets</a></li>
-			<li>contact</li>
-			<li><a href="login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div class="menu-container">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">projets</a></li>
+				<li>contact</li>
+				<li><a href="login.html" id="login-link">login</a></li>
+				<li><a href="#" id="logout-link">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="login-section">
         <div class="login-container">
-            <form action="#" method="post">
+            <form action="#" method="post" id="loginForm">
                 <h2>Login</h2>
                 <label>E-mail</label>
                 <input type="email" id="login-email" autocomplete="off" required> <br>

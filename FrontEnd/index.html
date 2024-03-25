@@ -11,20 +11,23 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/modal.css">
 	<script src="https://kit.fontawesome.com/e79e12b662.js" crossorigin="anonymous"></script>
-	<script src="/Backend/auth.js" defer ></script>
+	<script src="/Backend/loginDisplayManagement.js" defer ></script>
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="index.html">projets</a></li>
-			<li>contact</li>
-			<li><a href="login.html" id="login-link">login</a></li>
-			<li><a href="#" id="logout-link">logout</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div id="modify-banner"><span><i class="fa-regular fa-pen-to-square"></i></span>Mode édition</div>
+	<div class="menu-container">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">projets</a></li>
+				<li>contact</li>
+				<li><a href="login.html" id="login-link">login</a></li>
+				<li><a href="#" id="logout-link">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -63,7 +66,7 @@
 					<h3>Ajout photo</h3>
 				</div>
 				<div class="modal-add-work">
-					<form method="post">
+					<form method="post" id="workForm">
 						<div class="upload-file-container">
 							<div id="imagePreview"></div>
 							<i class="fa-regular fa-image"></i>
@@ -73,16 +76,18 @@
 							<input type="file" name="upload-work" id="upload-work-image-modal" accept="image/jpeg, image/png" required> <br>
 							<p>jpg, png : 4mo max</p>
 						</div>
+						<div class="form-container">
 						<label for="work-title-modal">Titre</label>
 						<input class="modal-input" type="text" name="title" id="work-title-modal" required> <br>
 						<label for="select-category-modal">Catégorie</label>
 						<select class="modal-input" name="select-category" id="select-category-modal" required>
 							<option disabled selected value="">Sélectionnez une option</option>
-							<option value="objets">Objets</option>
-							<option value="Appartements">Appartements</option>
-							<option value="hotels-restaurants">Hôtels & Restaurants</option>
+							<option value="1" data-category-id="1">Objets</option>
+							<option value="2" data-category-id="2">Appartements</option>
+							<option value="3" data-category-id="3">Hôtels & Restaurants</option>
 						</select> <br>
-						<input type="submit" value="Valider" id="submit-work">
+						<input type="submit" value="Valider" id="submit-work" disabled>
+					</div>
 					</form>
 				</div>
 			</div>
