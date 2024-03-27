@@ -9,6 +9,7 @@ const modifyBtn = document.getElementById("modify-btn");
 const closeButtons = document.querySelectorAll(".close");
 
 const addPhotoBtn = document.getElementById('addPhoto-btn');
+const previousModal =document.getElementById("previousModal")
 
 const accessToken = sessionStorage.getItem('token');
 
@@ -136,6 +137,14 @@ function createDeleteButton(workId) {
 
 //----------------------------------------------------------------
 //Function pour changer de modal
+
+function previousModal() {
+previousModal.addEventListener('click', () => {
+  modals[0].style.display = 'block';
+  modals[1].style.display = 'none';
+});
+}
+previousModal()
 
 function nextModal() {
   addPhotoBtn.addEventListener('click', () => {
