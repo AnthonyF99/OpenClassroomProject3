@@ -44,3 +44,6 @@ document.getElementById('logout-link').addEventListener('click', function(event)
     // Appeler la fonction pour mettre à jour l'affichage des liens
     updateLoginStatus();
 });
+
+
+

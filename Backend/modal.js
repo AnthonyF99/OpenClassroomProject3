@@ -9,7 +9,7 @@ const modifyBtn = document.getElementById("modify-btn");
 const closeButtons = document.querySelectorAll(".close");
 
 const addPhotoBtn = document.getElementById('addPhoto-btn');
-const previousModal =document.getElementById("previousModal")
+const previousModalButton =document.getElementById("previous-modal")
 
 const accessToken = sessionStorage.getItem('token');
 
@@ -138,14 +138,6 @@ function createDeleteButton(workId) {
 //----------------------------------------------------------------
 //Function pour changer de modal
 
-function previousModal() {
-previousModal.addEventListener('click', () => {
-  modals[0].style.display = 'block';
-  modals[1].style.display = 'none';
-});
-}
-previousModal()
-
 function nextModal() {
   addPhotoBtn.addEventListener('click', () => {
     modals[0].style.display = 'none';
@@ -154,6 +146,16 @@ function nextModal() {
 }
 
 nextModal();
+
+
+function previousModal() {
+  previousModalButton.addEventListener('click', () => {
+    modals[0].style.display = 'block';
+    modals[1].style.display = 'none';
+  });
+}
+previousModal();
+
 
 //----------------------------------------------------------------
 //Function pour afficher l'image upload en preview.
@@ -203,9 +205,9 @@ displayPreviewImage()
 //--------------------------------------------------------------
 
 // Ajouter un écouteur d'événement sur la soumission du formulaire
-workForm.addEventListener('submit', async (event) => {
+workForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Empêcher le comportement par défaut du formulaire
-  await addWork();
+  addWork();
 });
 
 
@@ -249,7 +251,7 @@ async function addWork() {
     }
   } catch (error) {
     // Attraper les erreurs et les afficher dans la console
-    console.error('Erreur lors de l\'ajout du travail :', error.message);
+    console.error('Erreur lors de la communication avec api :', error.message);
   }
 }
 

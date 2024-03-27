@@ -22,6 +22,7 @@ export async function displayGalleryByCategory(category) {
         if (category === 'Tous' || work.category.name === category) {
             if (!uniqueWorkIds.has(work.id)) {
                 uniqueWorkIds.add(work.id);
+                //On verifie si l'oeuvre n'existe pas déjà et donc unique, pour pouvoir l'ajouter à la galerie
 
                 const figure = document.createElement('figure');
                 const img = document.createElement('img');
@@ -53,8 +54,8 @@ document.getElementById('filter-btn-4').addEventListener('click', () => displayG
 displayGalleryByCategory('Tous');
 
 
-//Changement quand un bouton est actif
-// Récupérer tous les boutons de filtre
+//-------------------------------------------------------
+//Le code suivant permet de définir quel boutons et actif ou non, et à 'laid du css on change ses propriété
 const filterButtons = document.querySelectorAll('.filter-btn');
 
 // Ajouter un écouteur d'événements à chaque bouton de filtre
@@ -70,7 +71,7 @@ filterButtons.forEach(button => {
     const tousButton = document.getElementById('filter-btn-1');
     tousButton.classList.add('active');
 });
-
+//-------------------------------------------------------
 
 function displayAdminOptions() {
   // Masquer la galerie publique avec les filtres

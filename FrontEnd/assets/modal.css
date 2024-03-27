@@ -123,6 +123,10 @@ hr {
   margin: 0 auto; /* Ajoutez cette règle pour centrer horizontalement le bouton */
 }
 
+#addPhoto-btn:hover {
+  background-color: #0E2F28;
+}
+
 
 /* CSS STYLE FOR THE ADD WORK MODAL */
 .modal-add-work {
