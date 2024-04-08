@@ -42,7 +42,9 @@ input {
 #btn-login:hover {
     background-color: #0E2F28;
 }
-
+#errorMessage {
+    margin-bottom: 20px;
+}
 #forget-pwd {
     color: black;
     display: block;

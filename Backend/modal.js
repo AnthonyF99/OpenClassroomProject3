@@ -27,6 +27,8 @@ const modalAddWork = document.querySelector('.modal-add-work');
 const form = modalAddWork.querySelector('form');
 const workForm = document.getElementById('workForm');
 const submitButton = workForm.querySelector('#submit-work');
+const errorMessageElement = document.getElementById('errorMessage');
+
 
 
 
@@ -310,8 +312,12 @@ document.addEventListener("DOMContentLoaded", function() {
       // Activer ou désactiver le bouton de validation en fonction de l'état des champs requis
       if (allFilled) {
           submitButton.removeAttribute('disabled');
+          errorMessageElement.style.display = "none";
       } else {
           submitButton.setAttribute('disabled', 'disabled');
+          errorMessageElement.innerText = "Veuillez remplir tout les champs"
+          errorMessageElement.style.color = "red";
+          errorMessageElement.style.display = "block";
       }
   });
 });
