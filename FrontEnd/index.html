@@ -9,18 +9,25 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modal.css">
+	<script src="https://kit.fontawesome.com/e79e12b662.js" crossorigin="anonymous"></script>
+	<script src="/Backend/loginDisplayManagement.js" defer ></script>
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div id="modify-banner"><span><i class="fa-regular fa-pen-to-square"></i></span>Mode édition</div>
+	<div class="menu-container">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">projets</a></li>
+				<li>contact</li>
+				<li><a href="login.html" id="login-link">login</a></li>
+				<li><a href="#" id="logout-link">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -35,52 +42,68 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="title-button-wrapper">
+			<h2>Mes Projets</h2>
+			<button id="modify-btn"><span><i class="fa-regular fa-pen-to-square"></i></span>modifier</button>
+		</div>
+		<div class="modal" id="first-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h3>Galerie photo</h3>
+				</div>
+					<div class="modal-gallery">
+	
+					</div>
+					<hr>
+					<button id="addPhoto-btn">Ajouter une photo</button>
+			</div>
+		</div>
+		<div class="modal" id="second-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span id="previous-modal"><i class="fa-solid fa-arrow-left"></i></span>
+					<span class="close">&times;</span>
+					<h3>Ajout photo</h3>
+				</div>
+				<div class="modal-add-work">
+					<form method="post" id="workForm">
+						<div class="upload-file-container">
+							<div id="imagePreview"></div>
+							<i class="fa-regular fa-image"></i>
+							<label for="upload-work-image-modal" class="custom-file-upload">
+								<p>+ Ajouter une photo</p>
+							</label>
+							<input type="file" name="upload-work" id="upload-work-image-modal" accept="image/jpeg, image/png" required> <br>
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<div class="form-container">
+						<label for="work-title-modal">Titre</label>
+						<input class="modal-input" type="text" name="title" id="work-title-modal" required> <br>
+						<label for="select-category-modal">Catégorie</label>
+						<select class="modal-input" name="select-category" id="select-category-modal" required>
+							<option disabled selected value="">Sélectionnez une option</option>
+							<option value="1" data-category-id="1">Objets</option>
+							<option value="2" data-category-id="2">Appartements</option>
+							<option value="3" data-category-id="3">Hôtels & Restaurants</option>
+						</select> <br>
+						<hr>
+						<div id="errorMessage"></div>
+						<input type="submit" value="Valider" id="submit-work" disabled>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="filter-container">
+			<button class="filter-btn" id="filter-btn-1">Tous</button>
+			<button class="filter-btn" id="filter-btn-2">Objets</button>
+			<button class="filter-btn" id="filter-btn-3">Appartements</button>
+			<button class="filter-btn" id="filter-btn-4">Hotels & restaurants</button>
+		</div>
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+			
 		</div>
 	</section>
 	<section id="contact">
@@ -105,5 +128,7 @@
 		</ul>
 	</nav>
 </footer>
+<script type="module" src="/Backend/gallery.js" ></script>
+<script type="module" src="/Backend/modal.js" ></script>
 </body>
 </html>

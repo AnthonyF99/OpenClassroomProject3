@@ -1,0 +1,256 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background: rgba(0, 0, 0, 0.30);
+  }
+
+  .modal-content{
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    width: 30%;
+    padding: 50px 100px;
+  }
+
+  .modal-header {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 30px; /* Espacement sous l'en-tête */
+}
+
+.modal-header > h3 {
+  color: #000;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#previous-modal {
+  color: black;
+  position: absolute;
+  top: -50px;
+  left: -90px;
+  font-size: 28px;
+  padding: 26px 30px;
+  font-weight: bold;
+}
+    
+  /* The Close Button */
+  .close {
+    color: black;
+    position: absolute;
+    top: -50px;
+    right: -90px;
+    font-size: 28px;
+    padding: 26px 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .modal-gallery {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+    margin-top: 26px;
+    margin-bottom: 85px;
+  }
+  
+  .modal-gallery img {
+    width: 100%;
+    height: 10em;
+  }
+
+
+/* Ajoutez ces règles pour les boutons de suppression */
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: black;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Ajoutez ces règles pour les images individuelles */
+.modal-gallery figure {
+  position: relative; /* Pour permettre d'avoir le trash can sur chaque image */
+}
+
+/* Ajoutez ces règles pour l'icône de la corbeille */
+.delete-button i {
+  font-size: 15px;
+}
+
+hr {
+  margin-bottom: 30px;
+}
+
+#addPhoto-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border: none;
+  padding: 10px 49px;
+  background-color: #1D6154;
+  border-radius: 68px;
+  margin: 0 auto; /* Ajoutez cette règle pour centrer horizontalement le bouton */
+}
+
+#addPhoto-btn:hover {
+  background-color: #0E2F28;
+}
+
+
+/* CSS STYLE FOR THE ADD WORK MODAL */
+.modal-add-work {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-file-container {
+  position: relative;
+  background-color: #E8F1F6;
+  height: 169px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Ajoutez ces règles pour centrer l'aperçu de l'image */
+#imagePreview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#imagePreview img {
+  width: 129px;
+  height: 100%;
+}
+
+.upload-file-container {
+  cursor: pointer;
+}
+
+
+.upload-file-container i {
+  display: flex;
+  flex-direction: column;
+  color: #B9C5CC;
+  font-size: 76px;
+}
+
+.custom-file-upload {
+  background-color: #CBD6DC;
+  padding: 15px 20px;
+  border-radius: 50px;
+  width: 30%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.custom-file-upload p {
+  color: #306685;
+}
+
+/* Pour cacher le texte "Choose File" */
+input[type="file"]::-webkit-file-upload-button, /* Cible le bouton dans les navigateur webkit (chrome et safari) */
+input[type="file"]::-moz-file-upload-button, /* Cible le bouton dans les navigateurs mozzila (firefox) */
+input[type="file"]::file-selector-button /* Cible le bouton dans les navigateurs modernes */ {
+  visibility: hidden; /* Rend le texte "Choose File" invisible */
+}
+
+/* Pour cacher le champ d'entrée par défaut */
+input[type="file"] {
+  display: none; /* Cache le champ d'entrée */
+}
+
+.modal-add-work .modal-input {
+    width: 100%;
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    margin-bottom: 30px;
+}
+
+.modal-add-work label {
+  color: #3D3D3D;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: bold;
+  line-height: normal; /* Espacement entre ligne de texte */
+}
+
+.modal-add-work select {
+  width: 100%;
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  margin-bottom: 30px;
+}
+
+/* Désactiver le bouton de soumission tant que tous les champs requis ne sont pas remplis */
+#submit-work:disabled {
+  opacity: 0.5; /* Opacité réduite pour indiquer que le bouton est désactivé */
+  pointer-events: none; /* Désactiver les événements de clic sur le bouton */
+  background-color: #A7A7A7!important;
+}
+
+
+#submit-work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border: none;
+  padding: 10px 49px;
+  border-radius: 68px;
+  margin: 0 auto; /* Ajoutez cette règle pour centrer horizontalement le bouton */
+  cursor: pointer;
+}
+
+#submit-work:hover {
+  background-color: #0E2F28;
+}
+
+#errorMessage {
+  text-align: center;
+  margin-bottom: 20px;
+}
