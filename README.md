@@ -1,6 +1,22 @@
 # Portfolio-architecte-sophie-bluel
 
-Code du projet 6 d'intégrateur web.
+## Description
+Ce projet transforme une page statique en une page interactive grâce à la manipulation du DOM avec JavaScript. Les fonctionnalités incluent la gestion d'événements et des modifications dynamiques du contenu.
+
+## Fonctionnalités
+- Interaction utilisateur via des événements.
+- Modification dynamique du contenu de la page.
+- Interface utilisateur interactive.
+
+## Technologies
+- HTML5
+- CSS3
+- JavaScript (DOM)
+
+## Comment exécuter le projet
+1. Clonez le dépôt :  
+   ```bash
+   git clone https://github.com/AnthonyF99/OpenClassroomProject3
 
 ## Information pour le lancer le code
 
